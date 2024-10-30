@@ -1,0 +1,37 @@
+{
+  "name": "zalora-api-sdk",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "rimraf ./npm && tsc && node ./example/index.js",
+    "build": "rimraf ./npm && tsc",
+    "build:npm": "tsc && node build.js",
+    "pub:npm": "npm publish ./npm",
+    "watch": "concurrently \"tsc --watch\" \"nodemon dist/index.js\""
+  },
+  "directories": {
+    "types": "dist/index.d.ts",
+    "doc": "doc",
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ghaowei08/zalora-api-sdk.git"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "crypto-js": "^4.2.0",
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "dotenv": "^16.4.5",
+    "rimraf": "^6.0.1"
+  },
+  "homepage": "https://github.com/ghaowei08/zalora-api-sdk.git#readme",
+  "author": {
+    "name": "Haowei Goh",
+    "email": "ghaowei08@gmail.com"
+  }
+}
