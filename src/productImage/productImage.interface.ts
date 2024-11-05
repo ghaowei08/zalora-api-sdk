@@ -4,13 +4,13 @@ export interface ProductImageGroupInstance {
   getProductSetImages: (
     req: GetProductSetImagesRequest
   ) => Promise<GetProductSetImagesResponse>;
-  createProductSetImages: (
+  createProductSetImage: (
     req: CreateProductSetImageRequest
   ) => Promise<CreateProductSetImageResponse>;
-  updateProductSetImages: (
+  updateProductSetImage: (
     req: UpdateProductSetImageRequest
   ) => Promise<UpdateProductSetImageResponse>;
-  deleteProductSetImages: (req: DeleteProductSetImageRequest) => Promise<void>;
+  deleteProductSetImage: (req: DeleteProductSetImageRequest) => Promise<void>;
 }
 
 export interface ProductImageConfig {

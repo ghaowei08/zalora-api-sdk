@@ -7,6 +7,8 @@ import { BrandGroup } from "./src/brand/brand.service";
 import { AttributeGroup } from "./src/attribute/attribute.service";
 import { ProductGroup } from "./src/product/product.service";
 import { ProductSetGroup } from "./src/productSet/productSet.service";
+import { ProductImageGroup } from "./src/productImage/productImage.service";
+import { ProductStockGroup } from "./src/productStock/productStock.service";
 
 export class ZaloraInstance {
   private country: Country = Country.GSC;
@@ -20,6 +22,8 @@ export class ZaloraInstance {
   public brand: BrandGroup;
   public category: CategoryGroup;
   public product: ProductGroup;
+  public productImage: ProductImageGroup;
+  public productStock: ProductStockGroup;
   public productSet: ProductSetGroup;
   public setting: SettingGroup;
 
@@ -68,6 +72,16 @@ export class ZaloraInstance {
     });
 
     this.product = new ProductGroup({
+      apiInstance,
+      accessToken: this.accessToken,
+    });
+
+    this.productImage = new ProductImageGroup({
+      apiInstance,
+      accessToken: this.accessToken,
+    });
+
+    this.productStock = new ProductStockGroup({
       apiInstance,
       accessToken: this.accessToken,
     });

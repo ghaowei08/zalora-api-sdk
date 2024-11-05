@@ -42,7 +42,7 @@ export class ProductImageGroup implements ProductImageGroupInstance {
   /**
    * @description The image may be sent as an URL or a binary file, please note that this endpoint can work with two content types and in documentation you can use dropdown and switch between application/json and multipart/form-data to see how to send request for corresponding content type.
    */
-  async createProductSetImages(
+  async createProductSetImage(
     req: CreateProductSetImageRequest
   ): Promise<CreateProductSetImageResponse> {
     const url = `/v2/product-set/${req.productSetId}/images`;
@@ -94,7 +94,7 @@ export class ProductImageGroup implements ProductImageGroupInstance {
   /**
    * @description The product set can have 2 images with the same position. When we update some image position to position 1 then this image should be marked as main. When we update position of image with current position 1, then another image (if any) with position 1 should be marked as main otherwise the image remain main.
    */
-  async updateProductSetImages(
+  async updateProductSetImage(
     req: UpdateProductSetImageRequest
   ): Promise<UpdateProductSetImageResponse> {
     const url = `/v2/product-set/${req.productSetId}/images/${req.imageId}`;
@@ -143,7 +143,7 @@ export class ProductImageGroup implements ProductImageGroupInstance {
   /**
    * @description When we remove image with current position 1 and main, then another image (if any) with position 1 should be marked as main. If no such image exists, a different image will be selected at random to become the new main image. The removal of images does not trigger a reindexing of the remaining images.
    */
-  async deleteProductSetImages(
+  async deleteProductSetImage(
     req: DeleteProductSetImageRequest
   ): Promise<void> {
     const url = `/v2/product-set/${req.productSetId}/images/${req.imageId}`;
