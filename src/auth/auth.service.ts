@@ -1,11 +1,10 @@
-import axios, { AxiosInstance } from "axios";
-import CryptoJS from "crypto-js";
-import { AuthConfig, GetAccessTokenResponse } from "./auth.interface";
+import { AxiosInstance } from "axios";
+import {
+  AuthConfig,
+  AuthGroupInstance,
+  GetAccessTokenResponse,
+} from "./auth.interface";
 import { Buffer } from "buffer";
-
-interface AuthGroupInstance {
-  getAccessToken: () => Promise<GetAccessTokenResponse>;
-}
 
 export class AuthGroup implements AuthGroupInstance {
   private apiInstance: AxiosInstance;
@@ -13,9 +12,7 @@ export class AuthGroup implements AuthGroupInstance {
   private clientSecret: string;
 
   constructor(config: AuthConfig) {
-    this.apiInstance = axios.create({
-      baseURL: config.baseUrl,
-    });
+    this.apiInstance = config.apiInstance;
     this.clientId = config.clientId;
     this.clientSecret = config.clientSecret;
   }

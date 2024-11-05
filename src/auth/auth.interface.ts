@@ -1,5 +1,11 @@
+import { AxiosInstance } from "axios";
+
+export interface AuthGroupInstance {
+  getAccessToken: () => Promise<GetAccessTokenResponse>;
+}
+
 export interface AuthConfig {
-  baseUrl: string;
+  apiInstance: AxiosInstance;
   clientId: string;
   clientSecret: string;
 }
