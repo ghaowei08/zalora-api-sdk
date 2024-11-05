@@ -1,30 +1,69 @@
-import axios, { AxiosInstance } from "axios";
-import CryptoJS from "crypto-js";
-import { AuthConfig, GetAccessTokenResponse } from "./category.interface";
-import { Buffer } from "buffer";
-
-interface CategoryGroupInstance {}
+import { AxiosInstance, AxiosResponse } from "axios";
+import {
+  CategoryConfig,
+  CategoryGroupInstance,
+  GetCategoriesRequest,
+  GetCategoriesResponse,
+  GetCategoryMappingResponse,
+  GetCategoryMostUsedResponse,
+} from "./category.interface";
+import requestToQuery from "../helper/requestToQuery";
 
 export class CategoryGroup implements CategoryGroupInstance {
   private apiInstance: AxiosInstance;
-  private clientId: string;
-  private clientSecret: string;
+  private accessToken: string;
 
-  constructor(config: AuthConfig) {
-    this.apiInstance = axios.create({
-      baseURL: config.baseUrl,
-    });
-    this.clientId = config.clientId;
-    this.clientSecret = config.clientSecret;
+  constructor(config: CategoryConfig) {
+    this.apiInstance = config.apiInstance;
+    this.accessToken = config.accessToken;
   }
 
-  private generateUrl(path: string): string {
-    const timestamp = Math.floor(Date.now() / 1000);
-    const baseString = `${this.partnerId}${path}${timestamp}`;
-    const sign = CryptoJS.HmacSHA256(baseString, this.clientSecret).toString(
-      CryptoJS.enc.Hex
-    );
-    const url = `${path}?partner_id=${this.partnerId}&timestamp=${timestamp}&sign=${sign}`;
-    return url;
+  async getCategories(
+    req: GetCategoriesRequest
+  ): Promise<GetCategoriesResponse> {
+    const url = `/v2/categories?&${requestToQuery(req)}`;
+    const method = "GET";
+    const res: AxiosResponse<GetCategoriesResponse> = await this.apiInstance({
+      url,
+      method,
+      headers: {
+        Authorization: `Bearer ${this.accessToken}`,
+      },
+    });
+    return res.data;
+  }
+
+  /**
+   * @description Depending on selected category, available options in some attributes can be limited. For example, there is an attribute "Season" with typical values like "Summer", "Autumn", "Winter" etc. In category "Winter sport clothing" options for attribute "Season" can be limited to only "Winter". If you will try to create or update product set in this category with Season=Summer there will be a validation error. When you request attributes for certain category using "GET /v2/category/{categoryId}/attributes", this mapping is already included. That means when you request "GET /v2/category/{category Id of Winter sport clothing}/attributes" then in available options of attribute "Season" you will see only "Winter".
+   */
+  async getCategoryMapping(): Promise<GetCategoryMappingResponse> {
+    const url = `/v2/category/mappings`;
+    const method = "GET";
+    const res: AxiosResponse<GetCategoryMappingResponse> =
+      await this.apiInstance({
+        url,
+        method,
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+        },
+      });
+    return res.data;
+  }
+
+  /**
+   * @description Return most used categories
+   */
+  async getCategoryMostUsed(): Promise<GetCategoryMostUsedResponse> {
+    const url = `/v2/category/most-used`;
+    const method = "GET";
+    const res: AxiosResponse<GetCategoryMostUsedResponse> =
+      await this.apiInstance({
+        url,
+        method,
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+        },
+      });
+    return res.data;
   }
 }
