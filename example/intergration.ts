@@ -20,16 +20,15 @@ const zalora = new ZaloraInstance({ clientId, clientSecret, accessToken });
 // getAttibuteSetAttributes();
 // getProducts();
 // getProductSets();
-getProductSetProducts();
+// getProductSetProducts();
 
 async function getAccessToken() {
   const res = await zalora.auth.getAccessToken();
-
   console.log("Token", res);
 }
 
 async function getCategories() {
-  let categories = [];
+  let categories: any[] = [];
   let limit = 100;
   let offset = 0;
   let res = await zalora.category.getCategories({ limit, offset });
@@ -62,7 +61,7 @@ async function getSettings() {
 }
 
 async function getBrands() {
-  let brands = [];
+  let brands: any[] = [];
   let limit = 100;
   let offset = 0;
   let res = await zalora.brand.getBrands({ limit, offset });
@@ -88,7 +87,7 @@ async function getAttibuteSetAttributes() {
   const attributeSetsRaw = readFileSync("./attributeSets.json").toString();
   const attributeSets = JSON.parse(attributeSetsRaw);
   const result = await Promise.all(
-    attributeSets.map(async (e) => {
+    attributeSets.map(async (e: any) => {
       return {
         ...e,
         attributes: await zalora.attribute.getAttributeSetAttributes({
@@ -101,7 +100,7 @@ async function getAttibuteSetAttributes() {
 }
 
 async function getAttributes() {
-  let attributes = [];
+  let attributes: any[] = [];
   let limit = 100;
   let offset = 0;
   let res = await zalora.attribute.getAttributes({ limit, offset });
@@ -119,7 +118,7 @@ async function getAttributes() {
 }
 
 async function getProductSets() {
-  let attributes = [];
+  let attributes: any[] = [];
   let limit = 100;
   let offset = 0;
   let res = await zalora.productSet.getProductSets({ limit, offset });

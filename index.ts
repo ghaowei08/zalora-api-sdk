@@ -23,8 +23,8 @@ export class ZaloraInstance {
   public category: CategoryGroup;
   public product: ProductGroup;
   public productImage: ProductImageGroup;
-  public productStock: ProductStockGroup;
   public productSet: ProductSetGroup;
+  public productStock: ProductStockGroup;
   public setting: SettingGroup;
 
   constructor(config: {
