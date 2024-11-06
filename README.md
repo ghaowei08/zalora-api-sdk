@@ -17,18 +17,17 @@ Mode.js SDK for managing the Zalora Seller Center API as per the [Zalora Seller 
 
 ## Installation
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/ghaowei08/zalora-api-sdk
-   ```
-2. **Install dependencies**:
-   ```bash
-   yarn
-   ```
-3. **Compile TypeScript:**:
-   ```bash
-   yarn build
-   ```
+### NPM
+
+```bash
+npm i zalora-api-sdk
+```
+
+### Yarn
+
+```bash
+yarn add zalora-api-sdk
+```
 
 ## Usage
 
