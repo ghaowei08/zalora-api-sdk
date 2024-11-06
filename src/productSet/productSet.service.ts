@@ -46,7 +46,7 @@ export class ProductSetGroup implements ProductSetGroupInstance {
   async createProductSet(
     req: CreateProductSetRequest
   ): Promise<CreateProductSetResponse> {
-    const url = `/v2/product-sets`;
+    const url = `/v2/product-set`;
     const method = "POST";
     const res: AxiosResponse<GetProductSetsResponse> = await this.apiInstance({
       url,
