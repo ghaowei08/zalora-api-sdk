@@ -11,7 +11,7 @@ export interface CategoryConfig {
   accessToken: string;
 }
 
-interface Category {
+export interface Category {
   id: number;
   parentId: number;
   name: string;
@@ -28,7 +28,7 @@ interface Category {
 }
 
 export interface GetCategoriesRequest extends GetBaseRequest {
-  includeInaccessible: boolean;
+  includeInaccessible?: boolean;
 }
 
 export interface GetCategoriesResponse extends GetBaseResponse<Category> {}

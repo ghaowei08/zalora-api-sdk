@@ -24,7 +24,7 @@ export interface ProductConfig {
   accessToken: string;
 }
 
-interface Product {
+export interface Product {
   id: number;
   uuid: string;
   srcId: string; // ID of product in Shop system. If empty means that product was not yet syncronized with Shop and is not visible to end customers.

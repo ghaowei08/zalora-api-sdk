@@ -11,7 +11,7 @@ export interface BrandConfig {
   accessToken: string;
 }
 
-interface Brand {
+export interface Brand {
   id: number;
   srcId: string;
   uuid: string;
@@ -29,10 +29,10 @@ export interface GetBrandsRequest extends GetBaseRequest {
   name?: string;
   brandIds?: number[];
   brandUUids?: string[];
-  includeInaccessible: boolean;
-  restrictedOnly: boolean;
-  sort: "createdAt" | "updatedAt" | "name";
-  sortDir: "asc" | "desc";
+  includeInaccessible?: boolean;
+  restrictedOnly?: boolean;
+  sort?: "createdAt" | "updatedAt" | "name";
+  sortDir?: "asc" | "desc";
 }
 export interface GetBrandsResponse extends GetBaseResponse<Brand> {}
 

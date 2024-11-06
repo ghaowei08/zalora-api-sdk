@@ -20,7 +20,7 @@ export interface ProductStockConfig {
   accessToken: string;
 }
 
-interface Stock {
+export interface Stock {
   shopSku: string;
   sellerSku: string;
   name: string;

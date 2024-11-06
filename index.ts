@@ -10,7 +10,35 @@ import { ProductSetGroup } from "./src/productSet/productSet.service";
 import { ProductImageGroup } from "./src/productImage/productImage.service";
 import { ProductStockGroup } from "./src/productStock/productStock.service";
 
-export class ZaloraInstance {
+export * from "./src/setting/setting.interface";
+export * from "./src/brand/brand.interface";
+export * from "./src/attribute/attribute.interface";
+export * from "./src/product/product.interface";
+export * from "./src/productSet/productSet.interface";
+export * from "./src/productImage/productImage.interface";
+export * from "./src/productStock/productStock.interface";
+
+export interface ZaloraInstanceConfig {
+  country?: Country;
+  environment?: Environment;
+  clientId: string;
+  clientSecret: string;
+  accessToken: string;
+}
+
+export interface IZaloraInstance {
+  auth: AuthGroup;
+  attribute: AttributeGroup;
+  brand: BrandGroup;
+  category: CategoryGroup;
+  product: ProductGroup;
+  productImage: ProductImageGroup;
+  productStock: ProductStockGroup;
+  productSet: ProductSetGroup;
+  setting: SettingGroup;
+}
+
+export class ZaloraInstance implements IZaloraInstance {
   private country: Country = Country.GSC;
   private environment: Environment = Environment.Staging;
   private clientId: string = "";
@@ -27,13 +55,7 @@ export class ZaloraInstance {
   public productStock: ProductStockGroup;
   public setting: SettingGroup;
 
-  constructor(config: {
-    country?: Country;
-    environment?: Environment;
-    clientId: string;
-    clientSecret: string;
-    accessToken: string;
-  }) {
+  constructor(config: ZaloraInstanceConfig) {
     if (config.country) {
       this.country = config.country;
     }

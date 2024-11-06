@@ -22,7 +22,7 @@ export interface AttributeConfig {
   accessToken: string;
 }
 
-interface AttributeSet {
+export interface AttributeSet {
   id: number;
   name: string;
   label: string;
@@ -30,7 +30,7 @@ interface AttributeSet {
   updatedAt: string;
 }
 
-interface Attribute {
+export interface Attribute {
   id: number;
   label: string;
   name: string;

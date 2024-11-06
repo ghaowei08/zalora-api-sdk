@@ -21,7 +21,7 @@ export interface ProductSetConfig {
   accessToken: string;
 }
 
-interface ProductSet {
+export interface ProductSet {
   id: number;
   uuid: string;
   srcId: string;

@@ -18,7 +18,7 @@ export interface ProductImageConfig {
   accessToken: string;
 }
 
-interface ProductImage {
+export interface ProductImage {
   id: number;
   srcId: string;
   productSetId: number;
